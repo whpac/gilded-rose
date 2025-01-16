@@ -12,7 +12,14 @@ public class ItemUpdaterFactory {
         updaters.put("Backstage passes to a TAFKAL80ETC concert", new BackstagePassUpdater());
     }
 
+
+
     public static ItemUpdater getUpdater(Item item) {
-        return updaters.getOrDefault(item.name, new DefaultItemUpdater());
+
+        if (item.name.contains("Conjured")) {
+            return new ConjuredUpdater();
+        }
+        else{
+        return updaters.getOrDefault(item.name, new DefaultItemUpdater());}
     }
 }
